@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="white">
+    <title>Warehouse Safety Checklist</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">Warehouse operations</p>
+          <h1>Offline Safety Checklist</h1>
+        </div>
+        <span class="status" aria-label="Offline-ready status">
+          <span aria-hidden="true">●</span> Offline ready
+        </span>
+      </header>
+
+      <section class="panel" aria-labelledby="checklist-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="section-label">Current checklist</p>
+            <h2 id="checklist-heading">Pre-shift safety inspection</h2>
+          </div>
+          <label class="search">
+            <span>Search checklist</span>
+            <input id="search-input" type="search" aria-label="Search checklist items" placeholder="Search items">
+          </label>
+        </div>
+
+        <form id="checklist-form" novalidate>
+          <div class="details-grid">
+            <div class="field">
+              <label for="worker-name">Crew member name</label>
+              <input id="worker-name" name="workerName" type="text" autocomplete="name" maxlength="80" required>
+              <span class="error" id="worker-name-error"></span>
+            </div>
+            <div class="field">
+              <label for="location">Warehouse location</label>
+              <input id="location" name="location" type="text" maxlength="80" required>
+              <span class="error" id="location-error"></span>
+            </div>
+            <div class="field">
+              <label for="shift">Shift</label>
+              <select id="shift" name="shift" required>
+                <option value="">Select shift</option>
+                <option value="Morning">Morning</option>
+                <option value="Afternoon">Afternoon</option>
+                <option value="Night">Night</option>
+              </select>
+              <span class="error" id="shift-error"></span>
+            </div>
+          </div>
+
+          <div id="loading" class="loading" role="status" aria-live="polite" hidden>
+            <span class="spinner" aria-hidden="true"></span>
+            Saving checklist…
+          </div>
+
+          <div id="checklist-items" class="checklist-items" aria-live="polite"></div>
+
+          <div class="field notes-field">
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" rows="3" maxlength="500" placeholder="Add observations or corrective actions"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <p id="form-status" class="form-status" aria-live="polite"></p>
+            <button id="submit-button" type="submit">Complete checklist</button>
+          </div>
+        </form>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
